@@ -4,9 +4,13 @@ spring:
       - localhost:9092
     properties:
       schema.registry.url: http://localhost:8081
-      specific.avro.reader: true
     consumer:
       group-id: avro-cg
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        specific.avro.reader: true
+logging:
+  file:
+    name: avroConsumer.log
